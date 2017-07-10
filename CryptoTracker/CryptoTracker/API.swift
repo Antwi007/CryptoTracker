@@ -45,17 +45,19 @@ class API {
         
     }
     
-    func getCurrenciesFromJSON(json: [String: Any]) -> Currency? {
+    func getCurrenciesFromJSON(json: [[String: Any]]) -> [Currency] {
         var currencies = [Currency]()
         
-        if let currencyJSONArray = 
-        
-        if let name = json["name"] as? String, let symbol = json["symbol"] as? String, let price = json["price_usd"] as? String {
-            let currency = Currency(name: name, symbol: symbol, price: price)
-            return currency
+        if let currenciesJSONArray = json as? [[String: Any]] {
+            for currencyJSON in currenciesJSONArray {
+                if let name = currencyJSON["name"] as? String, let symbol = currencyJSON["symbol"] as? String, let price = currencyJSON["price_usd"] as? String {
+                    let currency = Currency(name: name, symbol: symbol, price: price)
+                    currencies.append(currency)
+                }
+            }
         }
         
-        return nil
+        return currencies
     }
     
     
