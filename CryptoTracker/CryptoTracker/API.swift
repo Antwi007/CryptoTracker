@@ -25,24 +25,25 @@ class API {
             
             if let unwrappedData = data {
                 if let dictionary = self.getDictionaryFromData(data: unwrappedData){
-                    let currency = self.getCurrencyFromJSON(json: dictionary)
-                    completion currency
+                    let currencies = self.getCurrenciesFromJSON(json: dictionary)
+                    completion(currencies)
                 }
             }
         
         }
         
+        task.resume()
         
     }
     
-    func getDictionaryFromData(data: Data) -> [String: Any]?{
+    func getDictionaryFromData(data: Data) -> [[String: Any]]?{
         
         if let jsonObject = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) {
-            if let jsonDictionary = jsonObject as? [String: Any] {
+            if let jsonDictionary = jsonObject as? [[String: Any]] {
                 return jsonDictionary
             }
         }
-        
+        return nil
     }
     
     func getCurrenciesFromJSON(json: [[String: Any]]) -> [Currency] {
@@ -50,13 +51,15 @@ class API {
         
         if let currenciesJSONArray = json as? [[String: Any]] {
             for currencyJSON in currenciesJSONArray {
-                if let name = currencyJSON["name"] as? String, let symbol = currencyJSON["symbol"] as? String, let price = currencyJSON["price_usd"] as? String {
-                    let currency = Currency(name: name, symbol: symbol, price: price)
+                if let name = currencyJSON["name"] as? String, let symbol = currencyJSON["symbol"] as? String, let price = currencyJSON["price_usd"] as? String, let rank = currencyJSON["rank"] as? String {
+                    let currency = Currency(name: name, symbol: symbol, price: price, rank: rank)
+//                    print(name)
+//                    print(currency.name)
                     currencies.append(currency)
                 }
             }
         }
-        
+        //print(currencies)
         return currencies
     }
     
