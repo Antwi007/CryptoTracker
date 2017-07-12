@@ -14,12 +14,15 @@ class Currency {
     var symbol: String
     var price_usd: String
     var rank: String
+    var icon: UIImage?
     
-    init(name: String, symbol: String, price: String, rank: String){
+    
+    init(name: String, symbol: String, price: String, rank: String, icon: UIImage?){
         self.name = name
         self.symbol = symbol
         self.price_usd = price
         self.rank = rank
+        self.icon = icon
     }
     
 }
@@ -36,6 +39,8 @@ class PriceFeedViewController: UIViewController, UITableViewDelegate, UITableVie
         // Do any additional setup after loading the view, typically from a nib.
         
         view.backgroundColor = .white
+        title = "Price Feed"
+        
         
         fetchCurrencies()
         
@@ -43,7 +48,7 @@ class PriceFeedViewController: UIViewController, UITableViewDelegate, UITableVie
         baseTableView.register(PriceFeedTableViewCell.self, forCellReuseIdentifier: "Reuse")
         baseTableView.dataSource = self
         baseTableView.delegate = self
-        baseTableView.rowHeight = 100
+        baseTableView.rowHeight = 150
         view.addSubview(baseTableView)
         
         refreshControl = UIRefreshControl()
@@ -83,7 +88,7 @@ class PriceFeedViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = baseTableView.dequeueReusableCell(withIdentifier: "Reuse") as? PriceFeedTableViewCell{
             let currency = currencies[indexPath.row]
-            cell.setupCellWithCurrency(name: currency.name, symbol: currency.symbol, rank: currency.rank)
+            cell.setupCellWithCurrency(name: currency.name, symbol: currency.symbol, rank: currency.rank, price: currency.price_usd, icon: currency.icon!)
             return cell
         }
         
