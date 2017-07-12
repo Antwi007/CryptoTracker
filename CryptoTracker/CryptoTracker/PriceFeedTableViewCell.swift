@@ -14,6 +14,7 @@ class PriceFeedTableViewCell: UITableViewCell {
     var symbolLabel: UILabel!
     var rankLabel: UILabel!
     var priceLabel: UILabel!
+    var iconView: UIImageView!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         //need super if overriding init
@@ -25,8 +26,10 @@ class PriceFeedTableViewCell: UITableViewCell {
         symbolLabel = UILabel()
         rankLabel = UILabel()
         priceLabel = UILabel()
+        iconView = UIImageView()
         
         
+        addSubview(iconView)
         addSubview(priceLabel)
         addSubview(rankLabel)
         addSubview(symbolLabel)
@@ -41,15 +44,20 @@ class PriceFeedTableViewCell: UITableViewCell {
 
     
     override func layoutSubviews() {
-        rankLabel.frame = CGRect(x: 10, y: 0, width: 25, height: frame.height)
+        rankLabel.frame = CGRect(x: 10, y: 0, width: 25, height: frame.height * 0.5)
+        
+        iconView.frame = CGRect(x: 10, y: frame.height * 0.5, width: 25, height: frame.height * 0.5)
+        
         
         currencyNameLabel.frame = CGRect(x: rankLabel.frame.width + 10, y: 0, width: 150, height: frame.height / 2.0)
         currencyNameLabel.center = CGPoint(x: currencyNameLabel.center.x, y: frame.height * 0.25)
         
-        symbolLabel.frame = CGRect(x: rankLabel.frame.width + 10, y: 0, width: 150, height: frame.height / 2.0)
-        symbolLabel.center = CGPoint(x: symbolLabel.center.x, y: frame.height * 0.75)
+        symbolLabel.frame = CGRect(x: frame.width * 0.5, y: 0, width: 150, height: frame.height / 2.0)
+        symbolLabel.center = CGPoint(x: symbolLabel.center.x, y: frame.height * 0.25)
         
-        priceLabel
+        priceLabel.frame = CGRect(x: rankLabel.frame.width + 10, y: 0, width: frame.width, height: frame.height / 2.0)
+        priceLabel.center = CGPoint(x: priceLabel.center.x, y: frame.height * 0.75)
+        
         
         
         
@@ -59,10 +67,13 @@ class PriceFeedTableViewCell: UITableViewCell {
         fatalError("init(coder:_ has not been implemented")
     }
     
-    func setupCellWithCurrency(name: String, symbol: String, rank: String){
+    //cell constructor
+    func setupCellWithCurrency(name: String, symbol: String, rank: String, price: String, icon: UIImage){
         currencyNameLabel.text = name
         symbolLabel.text = "Symbol: \(symbol)"
         rankLabel.text = rank
+        priceLabel.text = "Price in USD: \(price)"
+        iconView.image = icon
     }
     
     
