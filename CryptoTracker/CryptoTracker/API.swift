@@ -55,10 +55,10 @@ class API {
             for currencyJSON in currenciesJSONArray {
                 if let name = currencyJSON["name"] as? String, let symbol = currencyJSON["symbol"] as? String, let price = currencyJSON["price_usd"] as? String, let rank = currencyJSON["rank"] as? String {
                     
-                    var iconLink = iconLinkPrefix + "\(name).png"
+                    let iconLink = iconLinkPrefix + "\(name).png"
                     
                     
-                    let currency = Currency(name: name, symbol: symbol, price: price, rank: rank, icon: (getImageFromURLString(urlString: getImageFromURLString(urlString: iconLink))))
+                    let currency = Currency(name: name, symbol: symbol, price: price, rank: rank, icon: (getImageFromURLString(urlString: iconLink)))
 //                    print(name)
 //                    print(currency.name)
                     

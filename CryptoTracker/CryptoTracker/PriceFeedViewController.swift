@@ -14,10 +14,10 @@ class Currency {
     var symbol: String
     var price_usd: String
     var rank: String
-    var icon: UIImage
+    var icon: UIImage?
     
     
-    init(name: String, symbol: String, price: String, rank: String, icon: UIImage){
+    init(name: String, symbol: String, price: String, rank: String, icon: UIImage?){
         self.name = name
         self.symbol = symbol
         self.price_usd = price
@@ -88,7 +88,7 @@ class PriceFeedViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = baseTableView.dequeueReusableCell(withIdentifier: "Reuse") as? PriceFeedTableViewCell{
             let currency = currencies[indexPath.row]
-            cell.setupCellWithCurrency(name: currency.name, symbol: currency.symbol, rank: currency.rank, price: currency.price_usd, icon: currency.icon)
+            cell.setupCellWithCurrency(name: currency.name, symbol: currency.symbol, rank: currency.rank, price: currency.price_usd, icon: currency.icon!)
             return cell
         }
         
