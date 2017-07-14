@@ -12,6 +12,7 @@ class API {
     
     let link = "https://api.coinmarketcap.com/v1/ticker/?limit=10"
     let iconLinkPrefix = "https://files.coinmarketcap.com/static/img/coins/16x16/"
+    let testLink = "https://files.coinmarketcap.com/static/img/coins/16x16/bitcoin.png"
     
     
     func fetchCurrencies (completion: @escaping ([Currency]) -> ()) {
@@ -54,9 +55,11 @@ class API {
         if let currenciesJSONArray = json as? [[String: Any]] {
             for currencyJSON in currenciesJSONArray {
                 if let name = currencyJSON["name"] as? String, let symbol = currencyJSON["symbol"] as? String, let price = currencyJSON["price_usd"] as? String, let rank = currencyJSON["rank"] as? String {
-                    
-                    let iconLink = iconLinkPrefix + "\(name).png"
-                    
+                    let lowName = name.lowercased()
+                    let formattedName = lowName.replacingOccurrences(of: " ", with: "-")
+
+                    let iconLink = iconLinkPrefix + "\(formattedName).png"
+                    //let iconLink = iconLinkPrefix + "ethereum.png"
                     
                     let currency = Currency(name: name, symbol: symbol, price: price, rank: rank, icon: (getImageFromURLString(urlString: iconLink)))
 //                    print(name)

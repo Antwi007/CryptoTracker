@@ -46,7 +46,7 @@ class PriceFeedTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         rankLabel.frame = CGRect(x: 10, y: 0, width: 25, height: frame.height * 0.5)
         
-        iconView.frame = CGRect(x: 10, y: frame.height * 0.5, width: 25, height: frame.height * 0.5)
+        iconView.frame = CGRect(x: 10, y: frame.height * 0.5, width: 16, height: 16)
         
         
         currencyNameLabel.frame = CGRect(x: rankLabel.frame.width + 10, y: 0, width: 150, height: frame.height / 2.0)
@@ -72,7 +72,7 @@ class PriceFeedTableViewCell: UITableViewCell {
         currencyNameLabel.text = name
         symbolLabel.text = "Symbol: \(symbol)"
         rankLabel.text = rank
-        priceLabel.text = "Price in USD: \(price)"
+        priceLabel.text = "Price in USD: $\(price)"
         iconView.image = icon
     }
     
