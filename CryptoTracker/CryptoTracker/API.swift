@@ -10,7 +10,7 @@ import UIKit
 
 class API {
     
-    let link = "https://api.coinmarketcap.com/v1/ticker/?limit=10"
+    let link = "https://api.coinmarketcap.com/v1/ticker/?limit=15"
     let iconLinkPrefix = "https://files.coinmarketcap.com/static/img/coins/16x16/"
     let testLink = "https://files.coinmarketcap.com/static/img/coins/16x16/bitcoin.png"
     
@@ -54,14 +54,14 @@ class API {
         
         if let currenciesJSONArray = json as? [[String: Any]] {
             for currencyJSON in currenciesJSONArray {
-                if let name = currencyJSON["name"] as? String, let symbol = currencyJSON["symbol"] as? String, let price = currencyJSON["price_usd"] as? String, let rank = currencyJSON["rank"] as? String {
+                if let name = currencyJSON["name"] as? String, let symbol = currencyJSON["symbol"] as? String, let price = currencyJSON["price_usd"] as? String, let rank = currencyJSON["rank"] as? String, let change24h = currencyJSON["percent_change_24h"] as? String {
                     let lowName = name.lowercased()
                     let formattedName = lowName.replacingOccurrences(of: " ", with: "-")
 
                     let iconLink = iconLinkPrefix + "\(formattedName).png"
                     //let iconLink = iconLinkPrefix + "ethereum.png"
                     
-                    let currency = Currency(name: name, symbol: symbol, price: price, rank: rank, icon: (getImageFromURLString(urlString: iconLink)))
+                    let currency = Currency(name: name, symbol: symbol, price: price, rank: rank, icon: (getImageFromURLString(urlString: iconLink)), change24h: change24h)
 //                    print(name)
 //                    print(currency.name)
                     
