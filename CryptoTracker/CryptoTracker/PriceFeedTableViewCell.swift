@@ -75,11 +75,9 @@ class PriceFeedTableViewCell: UITableViewCell {
         
         var changeNum = Float(change)
         changeNum = roundf(100.0 * changeNum!) / 100.0
-        if change.hasPrefix("-") {
-            changeLabel.textColor = .red
-        } else {
-            changeLabel.textColor = .green
-        }
+        
+        //learned ternary operator
+        changeLabel.textColor = change.hasPrefix("-") ? .red : .green
         changeLabel.text = "24h: \(changeNum!)%"
     }
     

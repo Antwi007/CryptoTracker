@@ -13,6 +13,8 @@
 		370F2C151F13DAD000EFE2F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 370F2C131F13DAD000EFE2F8 /* LaunchScreen.storyboard */; };
 		37BB88CB1F141C0900099EBF /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BB88CA1F141C0900099EBF /* API.swift */; };
 		37BB88CD1F15342D00099EBF /* PriceFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BB88CC1F15342D00099EBF /* PriceFeedTableViewCell.swift */; };
+		37E742D51F1D0A37008096E0 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E742D41F1D0A37008096E0 /* PortfolioViewController.swift */; };
+		37E742D71F1D152B008096E0 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E742D61F1D152B008096E0 /* CustomTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		370F2C161F13DAD000EFE2F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		37BB88CA1F141C0900099EBF /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		37BB88CC1F15342D00099EBF /* PriceFeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceFeedTableViewCell.swift; sourceTree = "<group>"; };
+		37E742D41F1D0A37008096E0 /* PortfolioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
+		37E742D61F1D152B008096E0 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,8 +61,10 @@
 			isa = PBXGroup;
 			children = (
 				370F2C0A1F13DACF00EFE2F8 /* AppDelegate.swift */,
+				37E742D61F1D152B008096E0 /* CustomTabBarController.swift */,
 				370F2C0C1F13DACF00EFE2F8 /* PriceFeedViewController.swift */,
 				37BB88CC1F15342D00099EBF /* PriceFeedTableViewCell.swift */,
+				37E742D41F1D0A37008096E0 /* PortfolioViewController.swift */,
 				37BB88CA1F141C0900099EBF /* API.swift */,
 				370F2C111F13DAD000EFE2F8 /* Assets.xcassets */,
 				370F2C131F13DAD000EFE2F8 /* LaunchScreen.storyboard */,
@@ -140,6 +146,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				370F2C0D1F13DACF00EFE2F8 /* PriceFeedViewController.swift in Sources */,
+				37E742D51F1D0A37008096E0 /* PortfolioViewController.swift in Sources */,
+				37E742D71F1D152B008096E0 /* CustomTabBarController.swift in Sources */,
 				37BB88CD1F15342D00099EBF /* PriceFeedTableViewCell.swift in Sources */,
 				37BB88CB1F141C0900099EBF /* API.swift in Sources */,
 				370F2C0B1F13DACF00EFE2F8 /* AppDelegate.swift in Sources */,

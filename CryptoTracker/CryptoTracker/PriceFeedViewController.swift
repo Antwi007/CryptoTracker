@@ -41,7 +41,7 @@ class PriceFeedViewController: UIViewController, UITableViewDelegate, UITableVie
         // Do any additional setup after loading the view, typically from a nib.
         
         view.backgroundColor = .white
-        title = "Price Feed"
+        self.title = "Price Feed"
         
         
         fetchCurrencies()
