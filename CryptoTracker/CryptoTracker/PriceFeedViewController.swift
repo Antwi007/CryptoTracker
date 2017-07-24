@@ -31,7 +31,7 @@ class PriceFeedViewController: UIViewController, UITableViewDelegate, UITableVie
         baseTableView.register(PriceFeedTableViewCell.self, forCellReuseIdentifier: "Reuse")
         baseTableView.dataSource = self
         baseTableView.delegate = self
-        baseTableView.rowHeight = 150
+        baseTableView.rowHeight = 100
         view.addSubview(baseTableView)
         
         refreshControl = UIRefreshControl()
@@ -80,6 +80,7 @@ class PriceFeedViewController: UIViewController, UITableViewDelegate, UITableVie
         if let cell = baseTableView.dequeueReusableCell(withIdentifier: "Reuse") as? PriceFeedTableViewCell{
             let currency = currencies[indexPath.row]
             cell.setupCellWithCurrency(name: currency.name, symbol: currency.symbol, rank: currency.rank, price: currency.price_usd, icon: currency.icon!, change: currency.change24h)
+            
             return cell
         }
         

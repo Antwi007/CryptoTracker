@@ -54,9 +54,9 @@ class API {
         
         if let currenciesJSONArray = json as? [[String: Any]] {
             for currencyJSON in currenciesJSONArray {
-                if let name = currencyJSON["name"] as? String, let symbol = currencyJSON["symbol"] as? String, let price = currencyJSON["price_usd"] as? String, let rank = currencyJSON["rank"] as? String, let change24h = currencyJSON["percent_change_24h"] as? String {
-                    let lowName = name.lowercased()
-                    let formattedName = lowName.replacingOccurrences(of: " ", with: "-")
+                if let name = currencyJSON["name"] as? String, let symbol = currencyJSON["symbol"] as? String, let price = currencyJSON["price_usd"] as? String, let rank = currencyJSON["rank"] as? String, let change24h = currencyJSON["percent_change_24h"] as? String, let id = currencyJSON["id"] as? String{
+                    
+                    let formattedName = id.replacingOccurrences(of: " ", with: "-")
 
                     let iconLink = iconLinkPrefix + "\(formattedName).png"
                     //let iconLink = iconLinkPrefix + "ethereum.png"

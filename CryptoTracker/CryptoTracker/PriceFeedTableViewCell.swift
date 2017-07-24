@@ -27,7 +27,7 @@ class PriceFeedTableViewCell: UITableViewCell {
         priceLabel = UILabel()
         iconView = UIImageView()
         changeLabel = UILabel()
-        
+        self.backgroundView = UIImageView(image: UIImage(contentsOfFile: "cell_background"))
         
         addSubview(changeLabel)
         addSubview(iconView)
@@ -68,6 +68,7 @@ class PriceFeedTableViewCell: UITableViewCell {
     //cell constructor
     func setupCellWithCurrency(name: String, symbol: String, rank: String, price: String, icon: UIImage, change: String){
         nameLabel.text = "\(name) (\(symbol))"
+        
         rankLabel.text = rank
         priceLabel.text = "Price in USD: $\(price)"
         iconView.image = icon

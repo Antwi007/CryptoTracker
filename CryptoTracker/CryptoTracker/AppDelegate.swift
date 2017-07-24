@@ -24,6 +24,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //window?.rootViewController = UINavigationController(rootViewController: PriceFeedViewController())
         window?.rootViewController = CustomTabBarController()
         
+        //setting the navigation bar style
+        let navigationBarAppearance = UINavigationBar.appearance()
+        navigationBarAppearance.tintColor = .white
+        navigationBarAppearance.barTintColor = .black
+        navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        
+        //setting the tab bar style
+        let tabBarAppearance = UITabBar.appearance()
+        tabBarAppearance.tintColor = .white
+        tabBarAppearance.barTintColor = .black
+        
+        
+        //setting the status bar color to white
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         
         return true
     }
