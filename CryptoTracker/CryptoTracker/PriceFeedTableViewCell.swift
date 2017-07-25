@@ -27,7 +27,9 @@ class PriceFeedTableViewCell: UITableViewCell {
         priceLabel = UILabel()
         iconView = UIImageView()
         changeLabel = UILabel()
-        self.backgroundView = UIImageView(image: UIImage(contentsOfFile: "cell_background"))
+        
+        //this doesnt work
+        //self.backgroundView = UIImageView(image: UIImage(contentsOfFile: "cell_background"))
         
         addSubview(changeLabel)
         addSubview(iconView)
