@@ -11,8 +11,11 @@ import UIKit
 class CurrencyDetailViewController: UIViewController {
 
     var currency: Currency!
-    var iconLink = "https://files.coinmarketcap.com/static/img/coins/32x32/"
+    var iconLink = "https://files.coinmarketcap.com/static/img/coins/128x128/"
     var iconView: UIImageView!
+    var titleLabel: UILabel!
+    var marketCapLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +28,17 @@ class CurrencyDetailViewController: UIViewController {
         fetchIcon()
         
         iconView = UIImageView(image: currency.icon)
+        titleLabel = UILabel()
+        titleLabel.text = "asdf"
+        marketCapLabel = UILabel()
         
         layoutSubviews()
         
-        view.addSubview(iconView)
         
-        // Do any additional setup after loading the view.
+        
+        view.addSubview(marketCapLabel)
+        view.addSubview(titleLabel)
+        view.addSubview(iconView)
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,14 +51,17 @@ class CurrencyDetailViewController: UIViewController {
         
         let api = API()
         currency.icon =  api.getImageFromURLString(urlString: iconLink)
-        //currency.icon =  api.getImageFromURLString(urlString: "https://files.coinmarketcap.com/static/img/coins/32x32/bitcoin.png")
-        
         
     }
     
     func layoutSubviews(){
-        iconView.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
-        iconView.center = CGPoint(x: view.center.x, y: view.center.y)
+        iconView.frame = CGRect(x: 0, y: 0, width: 64, height: 64)
+        iconView.center = CGPoint(x: view.center.x, y: view.frame.height * 0.25)
+        
+        titleLabel.frame = CGRect(x: 0, y: 0, width: 300, height: 25)
+        titleLabel.center = CGPoint(x: view.center.x, y: view.frame.height * 0.10)
+        
+        marketCapLabel.frame = CGRect(x: 0, y: 0, width: 100, height: 25)
     }
 
 }

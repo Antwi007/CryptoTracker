@@ -9,13 +9,14 @@
 import UIKit
 
 
-
+var feedNum = 15
 
 class PriceFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var baseTableView: UITableView!
     var currencies = [Currency]()
     var refreshControl: UIRefreshControl!
+    var settingsButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,13 @@ class PriceFeedViewController: UIViewController, UITableViewDelegate, UITableVie
         refreshControl.addTarget(self, action: #selector(refreshFeed), for: UIControlEvents.valueChanged)
         baseTableView.addSubview(refreshControl)
         
+        settingsButton = UIButton(type: .custom)
+        settingsButton.setImage(UIImage(named: "settings.png"), for: .normal)
+        settingsButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        settingsButton.addTarget(self, action: #selector(settingsPressed), for: .touchUpInside)
+        let barButton = UIBarButtonItem(customView: settingsButton)
+        self.navigationItem.setRightBarButton(barButton, animated: true)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,6 +69,29 @@ class PriceFeedViewController: UIViewController, UITableViewDelegate, UITableVie
         fetchCurrencies()
         baseTableView.reloadData()
         refreshControl.endRefreshing()
+    }
+    
+    func settingsPressed(){
+        let alert = UIAlertController(title: "Feed Settings", message: "Choose Number of Currencies to Show", preferredStyle: UIAlertControllerStyle.alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in })
+        
+        let setAction = UIAlertAction(title: "Set", style: .default, handler: { (action: UIAlertAction!) in
+            
+            let textField = alert.textFields![0] as UITextField
+            textField.keyboardType = UIKeyboardType.numberPad
+            
+            feedNum = Int(textField.text!)!
+        })
+        
+        alert.addTextField { (textField) in
+            textField.keyboardType = .decimalPad
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(setAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

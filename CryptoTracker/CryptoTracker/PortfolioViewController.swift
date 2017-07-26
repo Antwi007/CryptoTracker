@@ -32,7 +32,7 @@ class PortfolioViewController: UIViewController {
         nameLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 25))
         nameLabel.center = CGPoint(x: view.center.x, y: view.frame.height * 0.20)
         nameLabel.textAlignment = .center
-        nameLabel.text = "fName lName's Portfolio"
+        nameLabel.text = "FEATURE COMING SOON"
         view.addSubview(nameLabel)
         
         portfolioTabel = UITableView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.5))

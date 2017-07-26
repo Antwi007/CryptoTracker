@@ -10,9 +10,9 @@ import UIKit
 
 class API {
     
-    let link = "https://api.coinmarketcap.com/v1/ticker/?limit=15"
-    let iconLinkPrefix = "https://files.coinmarketcap.com/static/img/coins/16x16/"
-    let testLink = "https://files.coinmarketcap.com/static/img/coins/16x16/bitcoin.png"
+    let link = "https://api.coinmarketcap.com/v1/ticker/?limit=\(feedNum)"
+    let iconLinkPrefix = "https://files.coinmarketcap.com/static/img/coins/128x128/"
+    
     
     
     func fetchCurrencies (completion: @escaping ([Currency]) -> ()) {
