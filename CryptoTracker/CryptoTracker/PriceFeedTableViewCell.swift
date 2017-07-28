@@ -46,7 +46,7 @@ class PriceFeedTableViewCell: UITableViewCell {
 
     
     override func layoutSubviews() {
-        rankLabel.frame = CGRect(x: 10, y: 0, width: 25, height: frame.height * 0.5)
+        rankLabel.frame = CGRect(x: 10, y: 0, width: 30, height: frame.height * 0.5)
         
         iconView.frame = CGRect(x: rankLabel.frame.width + 10, y: 0, width: 16, height: 16)
         iconView.center = CGPoint(x: iconView.center.x, y: frame.height * 0.25)

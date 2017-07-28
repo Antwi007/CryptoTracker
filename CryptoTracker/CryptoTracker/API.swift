@@ -54,38 +54,33 @@ class API {
         
         if let currenciesJSONArray = json as? [[String: Any]] {
             for currencyJSON in currenciesJSONArray {
-                if let name = currencyJSON["name"] as? String, let symbol = currencyJSON["symbol"] as? String, let price = currencyJSON["price_usd"] as? String, let rank = currencyJSON["rank"] as? String, let change24h = currencyJSON["percent_change_24h"] as? String, let id = currencyJSON["id"] as? String{
+                if let name = currencyJSON["name"] as? String,
+                    let symbol = currencyJSON["symbol"] as? String,
+                    let price = currencyJSON["price_usd"] as? String,
+                    let rank = currencyJSON["rank"] as? String,
+                    let change24h = currencyJSON["percent_change_24h"] as? String,
+                    let id = currencyJSON["id"] as? String,
+                    let marketCap = currencyJSON["market_cap_usd"] as? String{
                     
                     let formattedName = id.replacingOccurrences(of: " ", with: "-")
 
                     let iconLink = iconLinkPrefix + "\(formattedName).png"
-                    //let iconLink = iconLinkPrefix + "ethereum.png"
                     
-                    let currency = Currency(name: name, symbol: symbol, price: price, rank: rank, icon: (getImageFromURLString(urlString: iconLink)), change24h: change24h)
-//                    print(name)
-//                    print(currency.name)
+                    
+                    let currency = Currency(name: name, symbol: symbol, price: price, rank: rank, icon: (getImageFromURLString(urlString: iconLink)), change24h: change24h, marketCap_usd: marketCap, id: id)
+
                     
                     currencies.append(currency)
                 }
             }
         }
-        //print(currencies)
+        
         return currencies
     }
     
     
     
-    /* COPIED 
- 
-    func getImageFromURLString(urlString: String) -> UImage? {
-        
-        let imageURL = URL(string: urlString)
-        if let imageData = try? Data(contentsOf: imageURL) {
-            let image = UIImage(data: imageData)
-            return image
-        }
-    }
-     */
+    
     
     func getImageFromURLString(urlString: String) -> UIImage? {
         

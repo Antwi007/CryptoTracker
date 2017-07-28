@@ -82,6 +82,7 @@ class PriceFeedViewController: UIViewController, UITableViewDelegate, UITableVie
             textField.keyboardType = UIKeyboardType.numberPad
             
             feedNum = Int(textField.text!)!
+            self.fetchCurrencies()
         })
         
         alert.addTextField { (textField) in
@@ -110,7 +111,7 @@ class PriceFeedViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = baseTableView.dequeueReusableCell(withIdentifier: "Reuse") as? PriceFeedTableViewCell{
             let currency = currencies[indexPath.row]
-            cell.setupCellWithCurrency(name: currency.name, symbol: currency.symbol, rank: currency.rank, price: currency.price_usd, icon: currency.icon!, change: currency.change24h)
+            cell.setupCellWithCurrency(name: currency.getName(), symbol: currency.getSymbol(), rank: currency.getRank(), price: currency.getPrice(), icon: currency.getIcon(), change: currency.getChange24h())
             
             return cell
         }

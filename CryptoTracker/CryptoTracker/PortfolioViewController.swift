@@ -25,7 +25,7 @@ class PortfolioViewController: UIViewController {
         
         valueLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 25))
         valueLabel.center = CGPoint(x: view.center.x, y: view.frame.height * 0.25)
-        valueLabel.text = "$50,000"
+        valueLabel.text = "$50,000 remaining in balance"
         valueLabel.textAlignment = .center
         view.addSubview(valueLabel)
         

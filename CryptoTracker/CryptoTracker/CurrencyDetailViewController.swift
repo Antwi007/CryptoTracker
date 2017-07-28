@@ -21,13 +21,13 @@ class CurrencyDetailViewController: UIViewController {
         super.viewDidLoad()
         
         
-        title = "\(currency.name) Details"
+        title = "\(currency.getName()) Details"
         view.backgroundColor = .white
         
         
         fetchIcon()
         
-        iconView = UIImageView(image: currency.icon)
+        iconView = UIImageView(image: currency.getIcon())
         titleLabel = UILabel()
         titleLabel.text = "asdf"
         marketCapLabel = UILabel()
@@ -47,10 +47,10 @@ class CurrencyDetailViewController: UIViewController {
     }
     
     func fetchIcon(){
-        iconLink = iconLink + "\(currency.name.lowercased()).png"
+        iconLink = iconLink + "\(currency.getName().lowercased()).png"
         
         let api = API()
-        currency.icon =  api.getImageFromURLString(urlString: iconLink)
+        currency.setIcon(icon: api.getImageFromURLString(urlString: iconLink)!)
         
     }
     
