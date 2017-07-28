@@ -28,9 +28,17 @@ class CurrencyDetailViewController: UIViewController {
         fetchIcon()
         
         iconView = UIImageView(image: currency.getIcon())
+        
         titleLabel = UILabel()
-        titleLabel.text = "asdf"
+        titleLabel.text = "\t\(currency.getName())"
+        titleLabel.font = titleLabel.font.withSize(30)
+        titleLabel.textAlignment = .natural
+        titleLabel.layer.backgroundColor = UIColor(red: 0/255, green: 234/255, blue: 100/255, alpha: 0.15).cgColor
+        
         marketCapLabel = UILabel()
+        marketCapLabel.text = "Market Cap: "
+        marketCapLabel.textAlignment = .natural
+        marketCapLabel.layer.backgroundColor = UIColor(red: 0/255, green: 234/255, blue: 100/255, alpha: 0.2).cgColor
         
         layoutSubviews()
         
@@ -47,7 +55,7 @@ class CurrencyDetailViewController: UIViewController {
     }
     
     func fetchIcon(){
-        iconLink = iconLink + "\(currency.getName().lowercased()).png"
+        iconLink = iconLink + "\(currency.getID().replacingOccurrences(of: " ", with: "-")).png"
         
         let api = API()
         currency.setIcon(icon: api.getImageFromURLString(urlString: iconLink)!)
@@ -56,12 +64,13 @@ class CurrencyDetailViewController: UIViewController {
     
     func layoutSubviews(){
         iconView.frame = CGRect(x: 0, y: 0, width: 64, height: 64)
-        iconView.center = CGPoint(x: view.center.x, y: view.frame.height * 0.25)
+        iconView.center = CGPoint(x: view.center.x, y: view.center.y)
         
-        titleLabel.frame = CGRect(x: 0, y: 0, width: 300, height: 25)
-        titleLabel.center = CGPoint(x: view.center.x, y: view.frame.height * 0.10)
+        titleLabel.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 75)
+        titleLabel.center = CGPoint(x: view.center.x, y: view.frame.height * 0.15)
         
-        marketCapLabel.frame = CGRect(x: 0, y: 0, width: 100, height: 25)
+        marketCapLabel.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 30)
+        marketCapLabel.center = CGPoint(x: view.center.x, y: titleLabel.center.y + 40)
     }
 
 }
