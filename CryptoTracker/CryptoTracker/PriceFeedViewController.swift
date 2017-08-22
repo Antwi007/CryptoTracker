@@ -113,6 +113,12 @@ class PriceFeedViewController: UIViewController, UITableViewDelegate, UITableVie
             let currency = currencies[indexPath.row]
             cell.setupCellWithCurrency(name: currency.getName(), symbol: currency.getSymbol(), rank: currency.getRank(), price: currency.getPrice(), icon: currency.getIcon(), change: currency.getChange24h())
             
+            if (indexPath.row % 2 == 0){
+                cell.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.15)
+            } else {
+                cell.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25)
+            }
+            
             return cell
         }
         
