@@ -59,6 +59,7 @@ class API {
                     let price = currencyJSON["price_usd"] as? String,
                     let rank = currencyJSON["rank"] as? String,
                     let change24h = currencyJSON["percent_change_24h"] as? String,
+                    let change1h = currencyJSON["percent_change_1h"] as? String,
                     let id = currencyJSON["id"] as? String,
                     let marketCap = currencyJSON["market_cap_usd"] as? String{
                     
@@ -67,7 +68,7 @@ class API {
                     let iconLink = iconLinkPrefix + "\(formattedName).png"
                     
                     
-                    let currency = Currency(name: name, symbol: symbol, price: price, rank: rank, icon: (getImageFromURLString(urlString: iconLink)), change24h: change24h, marketCap_usd: marketCap, id: id)
+                    let currency = Currency(name: name, symbol: symbol, price: price, rank: rank, icon: (getImageFromURLString(urlString: iconLink)), change24h: change24h, change1h: change1h, marketCap_usd: marketCap, id: id)
 
                     
                     currencies.append(currency)
