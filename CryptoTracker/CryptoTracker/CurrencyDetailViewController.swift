@@ -87,7 +87,14 @@ class CurrencyDetailViewController: UIViewController {
         
         pctChange24hLabel = UILabel()
         pctChange24hLabel.textColor = currency.getChange24h().hasPrefix("-") ? UIColor(red: 234/255, green: 0/255, blue: 100/255, alpha: 1) : UIColor(red: 0/255, green: 234/255, blue: 100/255, alpha: 1)
-        pctChange24hLabel.text = currency.getChange24h().hasPrefix("-") ? "Past 24 Hours: Down \(currency.getChange24h())%" : "Past 24 Hours: Up \(currency.getChange24h())%"
+        let change24hString = NSMutableAttributedString(string: "Past 24 Hours: ")
+        let arrow24h = NSTextAttachment()
+        arrow24h.image = currency.getChange24h().hasPrefix("-") ? UIImage(named: "down_arrow") : UIImage(named: "up_arrow")
+        arrow24h.bounds = CGRect(x: 0, y: 0, width: 20, height: 20)
+        change24hString.append(NSAttributedString(attachment: arrow24h))
+        change24hString.append(NSAttributedString(string: " \(currency.getChange24h())"))
+        change24hString.addAttribute(NSForegroundColorAttributeName, value: UIColor.black, range: NSRange(location: 0, length: 14))
+        pctChange24hLabel.attributedText = change24hString
         pctChange24hLabel.font = pctChange24hLabel.font.withSize(25)
         pctChange24hLabel.textAlignment = .center
         pctChange24hLabel.layer.backgroundColor = currency.getChange24h().hasPrefix("-") ? UIColor(red: 234/255, green: 0/255, blue: 100/255, alpha: 0.2).cgColor : UIColor(red: 0/255, green: 234/255, blue: 100/255, alpha: 0.2).cgColor
