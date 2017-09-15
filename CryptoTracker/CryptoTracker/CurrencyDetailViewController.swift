@@ -28,6 +28,7 @@ class CurrencyDetailViewController: UIViewController {
     var statsLabel: UILabel!
     var pctChange24hLabel: UILabel!
     var pctChange1hLabel: UILabel!
+    var pctChange7dLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -56,11 +57,13 @@ class CurrencyDetailViewController: UIViewController {
 
         
         pctChange1hLabel = UILabel()
-        pctChange1hLabel.textColor = currency.getChange1h().hasPrefix("-") ? UIColor(red: 234/255, green: 0/255, blue: 100/255, alpha: 1) : UIColor(red: 0/255, green: 234/255, blue: 100/255, alpha: 1)
+        pctChange1hLabel.textColor = currency.getChange1h().hasPrefix("-") ?
+            UIColor(red: 234/255, green: 0/255, blue: 100/255, alpha: 1) : UIColor(red: 0/255, green: 234/255, blue: 100/255, alpha: 1)
         //trying to get the image working
         let attributedString = NSMutableAttributedString(string: "Past Hour: ")
         let arrowAttachment = NSTextAttachment()
-        arrowAttachment.image = currency.getChange1h().hasPrefix("-") ? UIImage(named: "down_arrow") : UIImage(named: "up_arrow")
+        arrowAttachment.image = currency.getChange1h().hasPrefix("-") ?
+            UIImage(named: "down_arrow") : UIImage(named: "up_arrow")
         arrowAttachment.bounds = CGRect(x: 0, y: 0, width: 20, height: 20)
         attributedString.append(NSAttributedString(attachment: arrowAttachment))
         attributedString.append(NSAttributedString(string: " \(currency.getChange1h())%"))
@@ -68,7 +71,8 @@ class CurrencyDetailViewController: UIViewController {
         pctChange1hLabel.attributedText = attributedString
         pctChange1hLabel.font = pctChange1hLabel.font.withSize(25)
         pctChange1hLabel.textAlignment = .center
-        pctChange1hLabel.layer.backgroundColor = currency.getChange1h().hasPrefix("-") ? UIColor(red: 234/255, green: 0/255, blue: 100/255, alpha: 0.2).cgColor : UIColor(red: 0/255, green: 234/255, blue: 100/255, alpha: 0.2).cgColor
+        pctChange1hLabel.layer.backgroundColor = currency.getChange1h().hasPrefix("-") ?
+            UIColor(red: 234/255, green: 0/255, blue: 100/255, alpha: 0.2).cgColor : UIColor(red: 0/255, green: 234/255, blue: 100/255, alpha: 0.2).cgColor
         
         
         
@@ -86,10 +90,12 @@ class CurrencyDetailViewController: UIViewController {
         statsLabel.textAlignment = .center
         
         pctChange24hLabel = UILabel()
-        pctChange24hLabel.textColor = currency.getChange24h().hasPrefix("-") ? UIColor(red: 234/255, green: 0/255, blue: 100/255, alpha: 1) : UIColor(red: 0/255, green: 234/255, blue: 100/255, alpha: 1)
+        pctChange24hLabel.textColor = currency.getChange24h().hasPrefix("-") ?
+            UIColor(red: 234/255, green: 0/255, blue: 100/255, alpha: 1) : UIColor(red: 0/255, green: 234/255, blue: 100/255, alpha: 1)
         let change24hString = NSMutableAttributedString(string: "Past 24 Hours: ")
         let arrow24h = NSTextAttachment()
-        arrow24h.image = currency.getChange24h().hasPrefix("-") ? UIImage(named: "down_arrow") : UIImage(named: "up_arrow")
+        arrow24h.image = currency.getChange24h().hasPrefix("-") ?
+            UIImage(named: "down_arrow") : UIImage(named: "up_arrow")
         arrow24h.bounds = CGRect(x: 0, y: 0, width: 20, height: 20)
         change24hString.append(NSAttributedString(attachment: arrow24h))
         change24hString.append(NSAttributedString(string: " \(currency.getChange24h())"))
@@ -97,14 +103,33 @@ class CurrencyDetailViewController: UIViewController {
         pctChange24hLabel.attributedText = change24hString
         pctChange24hLabel.font = pctChange24hLabel.font.withSize(25)
         pctChange24hLabel.textAlignment = .center
-        pctChange24hLabel.layer.backgroundColor = currency.getChange24h().hasPrefix("-") ? UIColor(red: 234/255, green: 0/255, blue: 100/255, alpha: 0.2).cgColor : UIColor(red: 0/255, green: 234/255, blue: 100/255, alpha: 0.2).cgColor
+        pctChange24hLabel.layer.backgroundColor = currency.getChange24h().hasPrefix("-") ?
+            UIColor(red: 234/255, green: 0/255, blue: 100/255, alpha: 0.2).cgColor : UIColor(red: 0/255, green: 234/255, blue: 100/255, alpha: 0.2).cgColor
         
+        pctChange7dLabel = UILabel()
+        pctChange7dLabel.textColor = currency.getChange7d().hasPrefix("-") ?
+            UIColor(red: 234/255, green: 0/255, blue: 100/255, alpha: 1) : UIColor(red: 0/255, green: 234/255, blue: 100/255, alpha: 1)
+        let change7dString = NSMutableAttributedString(string: "Past 7 Days: ")
+        let arrow7d = NSTextAttachment()
+        arrow7d.image = currency.getChange7d().hasPrefix("-") ?
+            UIImage(named: "down_arrow") : UIImage(named: "up_arrow")
+        arrow7d.bounds = CGRect(x: 0, y: 0, width: 20, height: 20)
+        change7dString.append(NSAttributedString(attachment: arrow7d))
+        change7dString.append(NSAttributedString(string: " \(currency.getChange7d())"))
+        change7dString.addAttribute(NSForegroundColorAttributeName, value: UIColor.black, range: NSRange(location: 0, length: 12))
+        pctChange7dLabel.attributedText = change7dString
+        pctChange7dLabel.font = pctChange7dLabel.font.withSize(25)
+        pctChange7dLabel.textAlignment = .center
+        pctChange7dLabel.layer.backgroundColor = currency.getChange7d().hasPrefix("-") ?
+            UIColor(red: 234/255, green: 0/255, blue: 100/255, alpha: 0.2).cgColor : UIColor(red: 0/255, green: 234/255, blue: 100/255, alpha: 0.2).cgColor
+        
+
         
         
         
         layoutSubviews()
         
-        
+        view.addSubview(pctChange7dLabel)
         view.addSubview(pctChange1hLabel)
         view.addSubview(pctChange24hLabel)
         view.addSubview(statsLabel)
@@ -154,7 +179,8 @@ class CurrencyDetailViewController: UIViewController {
         pctChange24hLabel.frame = mCapTitle.frame
         pctChange24hLabel.center = CGPoint(x: view.center.x, y: mCapTitle.center.y + mCapTitle.frame.height * 0.5 + pctChange24hLabel.frame.height * 0.5)
         
-        
+        pctChange7dLabel.frame = pctChange24hLabel.frame
+        pctChange7dLabel.center = CGPoint(x: view.center.x, y: pctChange24hLabel.center.y + pctChange7dLabel.frame.height * 0.5 + pctChange7dLabel.frame.height * 0.5)
         
         
     }

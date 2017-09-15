@@ -18,11 +18,12 @@ class Currency {
     private var icon: UIImage?
     private var change24h: String
     private var change1h: String
+    private var change7d: String
     private var marketCap_usd: String
     private var id: String
     
     
-    init(name: String, symbol: String, price: String, rank: String, icon: UIImage?, change24h: String, change1h: String, marketCap_usd: String, id: String){
+    init(name: String, symbol: String, price: String, rank: String, icon: UIImage?, change24h: String, change1h: String, change7d: String, marketCap_usd: String, id: String){
         self.name = name
         self.symbol = symbol
         self.price_usd = price
@@ -30,6 +31,7 @@ class Currency {
         self.icon = icon
         self.change24h = change24h
         self.change1h = change1h
+        self.change7d = change7d
         self.marketCap_usd = marketCap_usd
         self.id = id
     }
@@ -60,6 +62,10 @@ class Currency {
     
     func getChange1h() -> String {
         return change1h
+    }
+    
+    func getChange7d() -> String {
+        return change7d
     }
     
     func getMarketCap() -> String {
