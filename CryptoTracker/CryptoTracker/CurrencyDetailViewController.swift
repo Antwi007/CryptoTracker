@@ -90,6 +90,7 @@ class CurrencyDetailViewController: UIViewController {
         statsLabel.textAlignment = .center
         
         pctChange24hLabel = UILabel()
+<<<<<<< HEAD
         pctChange24hLabel.textColor = currency.getChange24h().hasPrefix("-") ?
             UIColor(red: 234/255, green: 0/255, blue: 100/255, alpha: 1) : UIColor(red: 0/255, green: 234/255, blue: 100/255, alpha: 1)
         let change24hString = NSMutableAttributedString(string: "Past 24 Hours: ")
@@ -101,6 +102,10 @@ class CurrencyDetailViewController: UIViewController {
         change24hString.append(NSAttributedString(string: " \(currency.getChange24h())"))
         change24hString.addAttribute(NSForegroundColorAttributeName, value: UIColor.black, range: NSRange(location: 0, length: 14))
         pctChange24hLabel.attributedText = change24hString
+=======
+        pctChange24hLabel.textColor = currency.getChange24h().hasPrefix("-") ? UIColor(red: 234/255, green: 0/255, blue: 100/255, alpha: 1) : UIColor(red: 0/255, green: 234/255, blue: 100/255, alpha: 1)
+        pctChange24hLabel.text = currency.getChange24h().hasPrefix("-") ? "Past 24 Hours: Down \(currency.getChange24h())%" : "Past 24 Hours: Up \(currency.getChange24h())%"
+>>>>>>> parent of de5e69d... Color Fix
         pctChange24hLabel.font = pctChange24hLabel.font.withSize(25)
         pctChange24hLabel.textAlignment = .center
         pctChange24hLabel.layer.backgroundColor = currency.getChange24h().hasPrefix("-") ?
